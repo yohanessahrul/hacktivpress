@@ -14,7 +14,7 @@ Route|HTTP|Description
 /api/users/deletes:id|DELETE|Delete a user
 
 
-List of user articles:
+List of article routes:
 
 Route|HTTP|Description
 ---|---|---
