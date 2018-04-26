@@ -8,9 +8,9 @@ List of user routes:
 Route|HTTP|Description
 ---|---|---
 /api/users/all|GET|Get all the users
-/api/users/create|POST|Create a user
+/api/users/register|POST|Register a user
+/api/users/signin|POST|Login a user
 /api/users/findone/:id|GET|Get a single user
-/api/users/update:id|PUT|Update a user with new info
 /api/users/deletes:id|DELETE|Delete a user
 
 
