@@ -14,6 +14,17 @@ Route|HTTP|Description
 /api/users/deletes:id|DELETE|Delete a user
 
 
+List of user articles:
+
+Route|HTTP|Description
+---|---|---
+/api/articles/all|GET|Get all the articles
+/api/articles/create|POST|Create a article
+/api/articles/findone/:id|GET|Get a single article
+/api/articles/update:id|PUT|Update a article with new info
+/api/articles/deletes:id|DELETE|Delete a article
+
+
 ## Usage
 
 With only npm :
