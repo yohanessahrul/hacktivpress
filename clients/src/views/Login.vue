@@ -1,15 +1,26 @@
 <template>
     <div class="login">
-        <input type="text" placeholder="email">
-        <input type="text" placeholder="password">
+        <input v-model="email" type="text" placeholder="email">
+        <input v-model="password" type="text" placeholder="password">
         <div class="clear"></div>
-        <button>Simpan</button>
+        <button @click="loginUser()">Login</button>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Login'
+    name: 'Login',
+    methods: {
+        loginUser() {
+            console.log('Login user')
+            axios.post('http://localhost:3000/api/users/signin', {
+                email: this.email,
+                password: this.password
+            }, function(err, response){
+                //
+            })
+        }
+    }
 }
 </script>
 
