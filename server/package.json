@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yohanessahrul/hacktivpress.git"
+  },
+  "keywords": [
+    "hacktivpress"
+  ],
+  "author": "yohanessahrul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yohanessahrul/hacktivpress/issues"
+  },
+  "homepage": "https://github.com/yohanessahrul/hacktivpress#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.0.16",
+    "morgan": "^1.9.0",
+    "multer": "^1.3.0"
+  }
+}
