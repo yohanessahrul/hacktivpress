@@ -1,4 +1,7 @@
 const User = require('../models/m_user')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
+
 
 module.exports = {
     all: function (req, res) {
@@ -31,9 +34,11 @@ module.exports = {
         })
     },
     register: function (req, res) {
+        let hashPassword = bcrypt.hashSync(req.body.password, 8)
+        
         var newUser = new User({
             username: req.body.username,
-            password: req.body.password,
+            password: hashPassword,
             fullname: req.body.fullname,
             email: req.body.email
         })
@@ -53,11 +58,45 @@ module.exports = {
     },
     signin: function (req, res) {
         User.findOne({
-            email: req.params.id
+            email: req.body.email
         }, function(err, response1) {
-            res.status(200).json({
-                msg: 'Email ada nih!'
-            })
+            console.log('abis ngecek')
+            if(err){
+                console.log('masuk error')
+                res.status(500).json({
+                    // msg: 'Internal server error << << << < <<< < < '
+                })
+            } else {
+                // console.log('gak error kok==============+>')
+                if(response1) { // kalo gak ketemu
+                    let statusCompare = bcrypt.compareSync(req.body.password, response1.password)
+                    console.log(statusCompare)
+                    if(statusCompare == true) {
+                        console.log('Password cocok, masuk gan!')
+                        let payload = {
+                            username: response1.username,
+                            email: response1.email,
+                            fullname: response1.fullname
+                        }
+                        let token = jwt.sign(payload, process.env.SECRET)
+                        res.status(200).json({
+                            msg: 'Anda berhasil login',
+                            data: response1,
+                            token: token
+                        })
+                    } else {
+                        res.status(400).json({
+                            msg: 'Cek kembali username dan password anda !!!'
+                        })
+                    }
+                } else {
+                    res.status(400).json({
+                        msg: 'Cek kembali username dan password anda !!!'
+                    })
+                }
+            }
+
         })
     },
+    
 }
