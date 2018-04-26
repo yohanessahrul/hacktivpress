@@ -1,6 +1,7 @@
 const express = require('express')
 const routerUser = require('./routes/r.user')
 const routerArticle = require('./routes/r.article')
+const cors = require('cors')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const multer = require('multer')
@@ -14,10 +15,10 @@ db.once('open', function() {
   console.log('Connect to database !!')
 })
 
-
 const app = express()
 
 app.use(morgan('dev'))
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended:false }))
 
